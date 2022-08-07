@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import axios, { AxiosResponse } from 'axios'
+import axios from 'axios'
 import * as cheerio from 'cheerio'
 import { WebsiteMetaData } from '@/types/types'
 
@@ -85,7 +85,8 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
       data: websiteMetaData,
     })
   } catch (err) {
-    console.error(err)
+    res.status(500).end()
+    return
   }
 }
 
